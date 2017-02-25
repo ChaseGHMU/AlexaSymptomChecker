@@ -27,6 +27,8 @@ var responseFunction = function(intent, session, response){
 }
 
 var diagnosisFunction = function(intent, session, response){
+	console.log(intent);
+	console.log(intent.slots.system.value);
 
 	//Should be working
 	var clickSearch = function () {
@@ -53,11 +55,13 @@ var diagnosisFunction = function(intent, session, response){
 
 	//PROBABLY WRONG
 	var responseHandler = function (response) {
+		console.log(response);
 		response.tell(response.status);
 		var msg = (response.status == 200)
 		? formatJSON(response.responseText)
 		: response.responseText;
 		response.tell('Response: ', msg);
+		response.tell(msg);
 	}
 
 	//This one works
