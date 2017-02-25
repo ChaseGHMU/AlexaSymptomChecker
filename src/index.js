@@ -22,7 +22,7 @@ ResponseService.prototype.eventHandlers.onLaunch = responseFunction;
 
 ResponseService.prototype.intentHandlers = {
 
-	'GetDiagnosisIntent' : diagnosisFunction;
+	'GetDiagnosisIntent' : diagnosisFunction
 };
 
 exports.handler = function(event, context){
