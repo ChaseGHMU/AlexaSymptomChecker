@@ -1,4 +1,7 @@
-var Alexa = require('alexa-sdk');
+'use strict'
+
+var APP_ID = undefined;
+var Alexa = require('./alexa-sdk');
 
 //creates an Alexa object
 exports.handler = function(event, context, callback){
@@ -10,7 +13,11 @@ exports.handler = function(event, context, callback){
 //
 var handlers = {
 
-    'GetDiagnonisIntent': function () {
+	'OpenSymptomCheckerIntent': function(){
+		this.emit(':tell', 'Welcome to symptom checker. please list your symptoms.')
+	},
+
+    'GetDiagnonisIntent': function() {
         this.emit(':tell', 'You are gonna die');
     }
 
