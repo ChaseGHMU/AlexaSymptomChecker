@@ -7,8 +7,8 @@
 			"name": "symptom",
 			"type": "LIST_OF_SYMPTOMS"
 		}
-	]
-},
+		]
+	},
 	{
 		"intent": "HelpIntent"
 	}
