@@ -1,6 +1,6 @@
 'use strict'
 
-var APP_ID = 'amzn1.ask.skill.36b93194-b1d4-4479-91c0-37e909e2ecca';
+var APP_ID = 'amzn1.ask.skill.7aae67c9-5555-4e27-954f-ba88b2abfef3';
 var Alexa = require('./AlexaSkill');
 var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
 
