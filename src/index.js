@@ -10,8 +10,27 @@ exports.handler = function(event, context, callback){
 //
 var handlers = {
 
-    'HelloWorldIntent': function () {
-        this.emit(':tell', 'Hello World!');
+    'GetDiagnonisIntent': function () {
+        this.emit(':tell', 'You are gonna die');
     }
 
 };
+/*
+var states = {
+
+	SYMPTOMMODE: '_SYMPTOMMODE';,
+
+};
+
+var symptomModeHandler = Alexa.CreateStateHandler(states.SYMPTOMMODE, {
+
+	'SymptomSession': function(){
+		this.handler.state = '';
+		this.emitWithState('New Session');
+	},
+
+	'SymptomIntent': function(){
+		var guestSaid = this.event.
+	}
+}
+*/
