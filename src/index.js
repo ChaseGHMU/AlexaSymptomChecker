@@ -7,7 +7,7 @@ var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
 
 var config = {
                 hostname : "https://PortalWebService.e-imo.com",
-                apiKeySecret: "Basic YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ==",
+                apiKeySecret: "YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ==",
                 product: "ProblemIT_Professional"
 }
 
@@ -26,7 +26,7 @@ var diagnosisFunction = function(intent, session, response)
          var promise = client.search(searchParameters);
 	 response.tell(promise);
 
-	/*var clickSearch = function () {
+	var clickSearch = function () {
                 var searchParameters = {
                         "numberOfResults": 10,
                         "filterByPrecedence": 1,
@@ -35,15 +35,11 @@ var diagnosisFunction = function(intent, session, response)
                         "siteId": "HospitalA",
                         "userId": "UserA",
                         "searchTerm": value
-                        }
+                        };
                 var client = new IMO.PortalWebClient(config.hostname,config.apiKeySecret,config.product);
                 var promise = client.search(searchParameters);
-                promise
-                        .done(responseHandler(promise))
                 return promise;
 	}
-
-	console.log(promise.key); */
 
 	response.tell('You will probably die' + intent.slots.symptom.value);
 }
