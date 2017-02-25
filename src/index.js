@@ -13,7 +13,7 @@ var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
 var config = {
                 hostname : "http://184.73.124.73:80/PortalWebService",
                 apiKeySecret: "YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ==",
-                product: "ProblemIT_Professional"
+                product: "ProblemIT_Professional/search"
 }
 
 var ResponseService = function(){
