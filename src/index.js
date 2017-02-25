@@ -15,7 +15,7 @@ var responseFunction = function(intent, session, response){
 }
 
 var diagnosisFunction = function(intent, session, response){
-	response.tell('You will probably die');
+	response.tell('You will probably die' + intent.slots.symptom.value);
 }
 
 var helpFunction = function(intent,session,response){
