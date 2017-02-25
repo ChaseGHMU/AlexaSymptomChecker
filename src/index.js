@@ -52,18 +52,17 @@ var diagnosisFunction = function(intent, session, response)
 		var msg = (response.status == 200)
 		? formatJSON(response.responseText)
 		: response.responseText;
-		console.log('Response: ' msg);
+		response.tell('Response: ' msg);
 	}
 
 	//This one works
 	response.tell('You will probably die' + intent.slots.symptom.value);
 }
 
-//MAY BE WRONT
+//MAY BE WRONg
 var objects = formatJSON(jsonString) {
 	jsonString.trim();
 	return jsonObj = JSON.parse(jsonString);
-	
 }
 
 var helpFunction = function(intent,session,response){
