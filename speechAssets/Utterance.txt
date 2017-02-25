@@ -1,0 +1,3 @@
+GetDiagnosisIntent get result for {symptom}
+GetDiagnosisIntent what does it mean if I have {symptom}
+
