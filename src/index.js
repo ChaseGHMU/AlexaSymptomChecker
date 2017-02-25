@@ -24,10 +24,6 @@ var responseFunction = function(intent, session, response){
 
 var diagnosisFunction = function(intent, session, response)
 	
-	 var client = new IMO.PortalWebClient(config.hostname,config.apiKeySecret,config.product);
-         var promise = client.search(searchParameters);
-	 response.tell(promise);
-
 	var clickSearch = function () {
                 var searchParameters = {
                         "numberOfResults": 10,
@@ -40,7 +36,14 @@ var diagnosisFunction = function(intent, session, response)
                         };
                 var client = new IMO.PortalWebClient(config.hostname,config.apiKeySecret,config.product);
                 var promise = client.search(searchParameters);
-                return promise;
+		promise
+			.done(responseHandler)
+			.fail(function (response) {
+				console.log((response.responseJSON === undefined)
+					? response.statusText
+					: formateJSON(response.responseText));
+		});	
+		return promise;                
 	}
 
 	response.tell('You will probably die' + intent.slots.symptom.value);
