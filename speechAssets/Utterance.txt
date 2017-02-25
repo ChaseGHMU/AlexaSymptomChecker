@@ -58,3 +58,44 @@ HelpIntent Any advice
 HelpIntent I don't know
 HelpIntent How
 HelpIntent I can't even 
+
+NewPatientIntent Create new patient file for patient {patientId}
+NewPatientIntent Start new file for patient {patientId}
+NewPatientIntent New file for patient {patientId}
+NewPatientIntent Open a new file for patient {patientId}
+NewPatientIntent Open a new file for {patientId}
+NewPatientIntent Could you open up a new file for patient {patientId}
+NewPatientIntent Please open up a new file for patient {patientId}
+NewPatientIntent Please open up a new file for {patientId}
+NewPatientIntent Open new file for patient {patientId}
+NewPatientIntent Open new file for {patientId}
+
+PatientAgeIntent The patient's age is {age}
+PatientAgeIntent Their age is {age}
+PatientAgeIntent Age is {age}
+PatientAgeIntent Her age is {age}
+PatientAgeIntent His age is {age}
+
+GenderIntent She is {gender}
+GenderIntent He is {gender}
+GenderIntent Gender is {gender}
+
+HeightIntent The patient is {height} inches tall
+HeightIntent {height} inches
+HeightIntent Height is {height}
+
+WeightIntent The patient is {weight} pounds
+WeightIntent The patient weighs {weight}
+WeightIntent The patient weighs {weight} pounds
+WeightIntent {weight} pounds
+
+DiagnoseIntent The patient feels {symptom}
+DiagnoseIntent They feel {symptom}
+DiagnoseIntent They are {symptom}
+DiagnoseIntent The patient has a {symptom}
+
+OldPatientIntent Please open the file for patient {patientId}
+OldPatientIntent Please read the file for patient {patientId}
+OldPatientIntent Can you tell me about patient {patientId}
+OldPatientIntent Remember patient {patientId}
+OldPatientIntent Did you forget patient {patientId}

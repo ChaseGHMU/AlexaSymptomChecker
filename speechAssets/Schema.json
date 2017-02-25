@@ -1,4 +1,5 @@
 {
+i
 	"intents": [
 	{
 		"intent": "GetDiagnosisIntent",
@@ -11,6 +12,72 @@
 	},
 	{
 		"intent": "HelpIntent"
+	}
+	{
+		"intent": "NewPatientIntent",
+		"slots": [
+		{
+			"name":"patientId",
+			"type": "AMAZON.NUMBER"
+		}
+		{
+			"name":"patientName",
+			"type": "AMAZON.GB_FIRST_NAME"
+		}
+		{
+			"name":"gender",
+			"type":"GENDER"
+		}
+		{
+			"name":"age",
+			"type":"AMAZONE.NUMBER"
+		}
+		{
+			"name":"height",
+			"type":"AMAZON.NUMBER"
+		}
+		{
+			"name":"weight",
+			"type":"AMAZON.NUMBER"
+		}
+		{
+			"name":"symptom",
+			"type":"LIST_OF_SYMPTOMS"
+		}
+		]
+	}
+	{	
+		"intent": "OldPatientIntent",
+		"slots": [
+                {
+                        "name":"patientId",
+                        "type": "AMAZON.NUMBER"
+                }
+		{
+                        "name":"patientName",
+                        "type": "AMAZON.GB_FIRST_NAME"
+                }
+                {
+                        "name":"gender",
+                        "type":"GENDER"
+                }
+                {
+                        "name":"age",
+                        "type":"AMAZONE.NUMBER"
+                }
+                {
+                        "name":"height",
+                        "type":"AMAZON.NUMBER"
+                }
+                {
+                        "name":"weight",
+                        "type":"AMAZON.NUMBER"
+                }
+                {
+                        "name":"symptom",
+                        "type":"LIST_OF_SYMPTOMS"
+                }
+                ]
 	}
 	]
 }

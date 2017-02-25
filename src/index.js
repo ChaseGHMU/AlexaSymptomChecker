@@ -79,12 +79,61 @@ var helpFunction = function(intent,session,response){
 	response.tell('Just tell me your symptoms and I will find a diagnosis for you.');
 }
 
+var newPatientFunction = function(intent,session,response) {
+
+    var alexa = Alexa.handler(event, context);
+    alexa.appId = APP_ID;
+    alexa.dynamoDBTableName = 'PatientTable';
+    alexa.registerHandlers(State1Handlers, State2Handlers);
+    alexa.execute();
+	
+	var State1Handlers = Alexa.CreateStateHandler( {
+
+    	'NewPatientIntent': function() {
+        	this.attributes[patientId] = intent.slots.patientId.value;
+        	this.emit(':ask',"Patient record created. What is their name?');
+	}
+
+	'PatientNameIntent': function() {
+		this.attributes[patientName] = intent.slots.patientName.value;
+		this.emit(':ask',"What is the patient\'s gender?");
+	}
+
+	'GenderIntent' : function() {
+		this.attributes[gender] = intent.slots.patientName.value;
+		this.emit(':ask',"What is the patient\'s height?");
+	}
+
+	'HeightIntent' : function() {
+		this.attributes[height] = intent.slots.height.value;
+		this.emit(':ask',"What is the patient\'s weight?");
+	}
+
+	'WeightIntent' : function() {
+		this.attributes[weight] = intent.slots.weight.value;
+		this.emit(':ask',"what is the patient\'s symptom?); 
+	}
+
+	'DiagnoseIntent' : function() {
+		this.attributes[symptom] = intent.slots.weight.value;
+		this.emit(':tell',"Thank you. Patient record is finished.");
+	}
+
+    	'Unhandled': function() {
+        this.emit(':ask', 'Sorry, I didn\'t get that. Please try again.');
+   	}
+
+
+}
+
+
+
 ResponseService.prototype.eventHandlers.onLaunch = responseFunction;
 
 ResponseService.prototype.intentHandlers = {
-
 	'GetDiagnosisIntent' : diagnosisFunction,
-	'HelpIntent' : helpFunction
+	'HelpIntent' : helpFunction,
+	'NewPatientIntent' : newPatientFunction
 };
 
 exports.handler = function(event, context){
