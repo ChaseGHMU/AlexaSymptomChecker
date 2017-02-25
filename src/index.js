@@ -1,7 +1,10 @@
 'use strict'
+
 var https = require('https');
 
 var APP_ID = 'amzn1.ask.skill.3b8ded99-c4c3-43a3-ad0e-2d9d86484dc4';
+
+var IMO = require('./IMO');
 
 var Alexa = require('./AlexaSkill');
 
@@ -15,15 +18,16 @@ var config = {
 
 var ResponseService = function(){
 	Alexa.call(this, APP_ID);
-};
+}
 
 ResponseService.prototype = Object.create(Alexa.prototype);
+
 var responseFunction = function(intent, session, response){
 	response.tell(OUTPUT);
 }
 
-var diagnosisFunction = function(intent, session, response)
-	
+var diagnosisFunction = function(intent, session, response){
+
 	//Should be working
 	var clickSearch = function () {
                 var searchParameters = {
@@ -42,28 +46,29 @@ var diagnosisFunction = function(intent, session, response)
 			.fail(function (response) {
 				console.log((response.responseJSON === undefined)
 					? response.statusText
-					: formateJSON(response.responseText));
-		});	
-		return promise;                
+					: formatJSON(response.responseText));
+		});
+		return promise;
 	}
-	
+
 	//PROBABLY WRONG
 	var responseHandler = function (response) {
 		response.tell(response.status);
 		var msg = (response.status == 200)
 		? formatJSON(response.responseText)
 		: response.responseText;
-		response.tell('Response: ' msg);
+		response.tell('Response: ', msg);
 	}
 
 	//This one works
-	response.tell('You will probably die' + intent.slots.symptom.value);
+	response.tell('You will probably die' + responseHandler.msg);
 }
 
 //MAY BE WRONg
-var objects = formatJSON(jsonString) {
+var formatJSON = function(jsonString) {
 	jsonString.trim();
-	return jsonObj = JSON.parse(jsonString);
+	var jsonObj = JSON.parse(jsonString);
+	return jsonObj;
 }
 
 var helpFunction = function(intent,session,response){
