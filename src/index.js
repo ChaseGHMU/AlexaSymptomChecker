@@ -1,11 +1,10 @@
 'use strict'
 
-var http = require('http');
+var request = require('request');
 
 var APP_ID = 'amzn1.ask.skill.3b8ded99-c4c3-43a3-ad0e-2d9d86484dc4';
 
 var IMO = require('./IMO');
-
 var Alexa = require('./AlexaSkill');
 
 var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
@@ -15,6 +14,10 @@ var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
                 apiKeySecret: "YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ==",
                 product: "ProblemIT_Professional/search"
 }*/
+exports.handler = function(event,context){
+  var responseService = new ResponseService();
+  responseService.execute(event,context);
+};
 
 var ResponseService = function(){
 	Alexa.call(this, APP_ID);
@@ -30,11 +33,13 @@ var diagnosisFunction = function(intent, session, response){
 	console.log(intent);
 	console.log(intent.slots.system.value);
 
-  exports.handler = (event, context, callback) => {
+}
+
+exports.handler = (event, context, callback) => {
     var postData = {
         searchTerm: "diabetes type 2",
         numberOfResults: 5,
-        clientApp: "SymptomChecker",
+        clientApp: "TestApp",
         clientAppVersion:  "0.0.1",
         siteId: "site",
         userId: "user"
@@ -59,19 +64,10 @@ var diagnosisFunction = function(intent, session, response){
             console.log('headers', headers)
             console.log('statusCode', statusCode)
             console.log('body', body)
-            callback(null, body);
+            callback(null, body.SearchTermResponse.items[0].title);
         }
     })
 };
-	response.tell('You will probably die' + responseHandler.msg);
-}
-
-//MAY BE WRONg
-var formatJSON = function(jsonString) {
-	jsonString.trim();
-	var jsonObj = JSON.parse(jsonString);
-	return jsonObj;
-}
 
 var helpFunction = function(intent,session,response){
 	response.tell('Just tell me your symptoms and I will find a diagnosis for you.');
@@ -84,8 +80,3 @@ ResponseService.prototype.intentHandlers = {
 	'GetDiagnosisIntent' : diagnosisFunction,
 	'HelpIntent' : helpFunction
 };
-
-exports.handler = function(event, context){
-	var responseService = new ResponseService();
-	responseService.execute(event,context);
-}
