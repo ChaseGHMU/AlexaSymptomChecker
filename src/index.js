@@ -24,6 +24,7 @@ var responseFunction = function(intent, session, response){
 
 var diagnosisFunction = function(intent, session, response)
 	
+	//Should be working
 	var clickSearch = function () {
                 var searchParameters = {
                         "numberOfResults": 10,
@@ -32,7 +33,7 @@ var diagnosisFunction = function(intent, session, response)
                         "clientAppVersion": "1.0",
                         "siteId": "HospitalA",
                         "userId": "UserA",
-                        "searchTerm": value
+                        "searchTerm": intent.slots.system.value
                         };
                 var client = new IMO.PortalWebClient(config.hostname,config.apiKeySecret,config.product);
                 var promise = client.search(searchParameters);
@@ -45,8 +46,24 @@ var diagnosisFunction = function(intent, session, response)
 		});	
 		return promise;                
 	}
+	
+	//PROBABLY WRONG
+	var responseHandler = function (response) {
+		var msg = (response.status == 200)
+		? formatJSON(response.responseText)
+		: response.responseText;
+		console.log('Response: ' msg);
+	}
 
+	//This one works
 	response.tell('You will probably die' + intent.slots.symptom.value);
+}
+
+//MAY BE WRONT
+var objects = formatJSON(jsonString) {
+	jsonString.trim();
+	return jsonObj = JSON.parse(jsonString);
+	
 }
 
 var helpFunction = function(intent,session,response){
