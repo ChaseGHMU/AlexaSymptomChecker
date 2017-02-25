@@ -49,6 +49,7 @@ var diagnosisFunction = function(intent, session, response)
 	
 	//PROBABLY WRONG
 	var responseHandler = function (response) {
+		response.tell(response.status);
 		var msg = (response.status == 200)
 		? formatJSON(response.responseText)
 		: response.responseText;
