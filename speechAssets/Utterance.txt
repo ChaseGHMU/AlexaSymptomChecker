@@ -1,3 +1,8 @@
 GetDiagnosisIntent get result for {symptom}
 GetDiagnosisIntent what does it mean if I have {symptom}
+GetDiagnosisIntent {symptom}
+GetDiagnosisIntent I have {symptom} what does it mean
+GetDiagnosisIntent Can you tell me about {symptom}
 
+HelpIntent How do you work
+HelpIntent I'm lost on what to do

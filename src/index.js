@@ -14,15 +14,20 @@ var responseFunction = function(intent, session, response){
 	response.tell(OUTPUT);
 }
 
-var diagnosisFunction = function(intent,session,response){
+var diagnosisFunction = function(intent, session, response){
 	response.tell('You will probably die');
+}
+
+var helpFunction = function(intent,session,response){
+	response.tell('Just tell me your symptoms and I will find a diagnosis for you.')
 }
 
 ResponseService.prototype.eventHandlers.onLaunch = responseFunction;
 
 ResponseService.prototype.intentHandlers = {
 
-	'GetDiagnosisIntent' : diagnosisFunction
+	'GetDiagnosisIntent' : diagnosisFunction,
+	'HelpIntent' : helpFunction
 };
 
 exports.handler = function(event, context){
