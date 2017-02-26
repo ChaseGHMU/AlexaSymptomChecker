@@ -1,12 +1,8 @@
 'use strict'
-
 var request = require('request');
-
 var APP_ID = 'amzn1.ask.skill.3b8ded99-c4c3-43a3-ad0e-2d9d86484dc4';
-
 var IMO = require('./IMO');
 var Alexa = require('./AlexaSkill');
-
 var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
 
 /*var config = {
@@ -14,6 +10,105 @@ var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
                 apiKeySecret: "YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ==",
                 product: "ProblemIT_Professional/search"
 }*/
+
+exports.handler = (event, context) => {
+	
+	//If it is new, say so.
+	if(event.session.new) {
+		console.log("New");
+	}
+
+	switch(event.request.type) {
+		case "LaunchRequest":
+			console.log('Launch');
+			context.succeed(generateResponse(buildSpeechletResponse("Welcome", true),
+			{}
+			)
+		)
+		break;
+
+		case "IntentRequest":
+			console.log("Intent request");
+			switch(event.request.intent.name) {
+			case "GetDiagnosisIntent":
+			
+			var postData = {
+				searchTerm: "diabetes type 2",
+				numberOfResults: 5,
+				clientApp: "TestApp",
+				clientAppVersion: "0.0.1",
+				siteId: "site",
+				userId: "user"
+			}
+
+			var url = 'http://184.73.124.73/PortalWebServices/api/v2/product/problemIT_Professional/search'
+			var options = {
+				method: 'post',
+				body: postData,
+				json: true,
+				url: url,
+				headers: {
+					'Authorization': 'Basic YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ=='
+				}
+			}
+
+			request(options, function(err,res,body) {
+				if(err) {
+					console.log('error posting json',err)
+				}
+				else {
+					var headers = res.headers
+					var statusCode = res.statusCode
+					console.log('headers',headers)
+					console.log('statusCode',statusCode)
+					console.log('body',body)
+					generateResponse(buildSpeechletResponse(body.SearchTermResponse.items[0].title);
+				}
+			}
+			
+			break;
+
+			case "HelpIntent":
+				generateResponse(buildSpeechletResponse('Fly home buddy, I work alone,true),{} )
+			break;	
+			}
+
+			}
+			
+			}
+
+		case "SessionEndedRequest":
+		console.log("Session End");
+		break;
+		
+		default:
+		context.fail('Not a valid request');	
+	}
+
+}
+
+buildSpeechletResponse = (output, shouldEndSession) => {
+
+	return {
+		outputSpeech: {
+			type: "PlainText",
+			text: output
+	},
+	shouldEndSession: shouldEndSession
+}
+
+}
+
+generateResponse = (speechlestResponse, sessionAttribues) => {
+
+	return {
+		version: "1.0",
+		sessionAttributes: sessionAttributes,
+		response: speechlestResponse
+	}
+}
+
+/*
 exports.handler = function(event,context){
   var responseService = new ResponseService();
   responseService.execute(event,context);
@@ -136,4 +231,4 @@ ResponseService.prototype.intentHandlers = {
 	'GetDiagnosisIntent' : diagnosisFunction,
 	'HelpIntent' : helpFunction,
 	'NewPatientIntent' : newPatientFunction
-};
+}; */
