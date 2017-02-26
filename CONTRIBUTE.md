@@ -1,4 +1,4 @@
-#Contibuting to [PROJECT]
+#Contibuting to Alexa Symptom Checker
 
 #Welcome contributors to the project:
 
