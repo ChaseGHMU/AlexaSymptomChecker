@@ -91,7 +91,7 @@ var newPatientFunction = function(intent,session,response) {
 
     	'NewPatientIntent': function() {
         	this.attributes[patientId] = intent.slots.patientId.value;
-        	this.emit(':ask',"Patient record created. What is their name?');
+        	this.emit(':ask',"Patient record created. What is their name?");
 	}
 
 	'PatientNameIntent': function() {
@@ -111,20 +111,28 @@ var newPatientFunction = function(intent,session,response) {
 
 	'WeightIntent' : function() {
 		this.attributes[weight] = intent.slots.weight.value;
-		this.emit(':ask',"what is the patient\'s symptom?); 
+		this.emit(':ask',"what is the patient\'s symptom?"); 
 	}
 
 	'DiagnoseIntent' : function() {
 		this.attributes[symptom] = intent.slots.weight.value;
 		this.emit(':tell',"Thank you. Patient record is finished.");
 	}
+	
+	'OldPatientIntent' : function() {
+		this.emit(':tell',"Patient" + this.attributes[patientId] + "also known as " +
+			this.attributes[patientName] + "is a " + this.attributes[gender] + 
+			"with a height of " + this.attributes[height] + "and a width of " +
+			this.attributes[width] + ". Their symptom was " + this.attributes[symptom]);		
+
+
+	}
 
     	'Unhandled': function() {
         this.emit(':ask', 'Sorry, I didn\'t get that. Please try again.');
    	}
 
-
-}
+});
 
 
 
