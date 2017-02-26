@@ -1,0 +1,9 @@
+#Issues or Features
+
+  The main issue that will come up while using this app is that the API will no longer be available. Since that 
+  will be the main issue, finding a new API that is in depth enough to use will be the main challenge of the 
+  app in the future.
+  
+  If you feel the need to contribute a feature, the main one we weren't able to get around to is adding a dynamoDB
+  database to the project so that information can be stored. Another good feature to add would be to have the option
+  for doctors to create or load patient info from the database so it can be used by them later on.
