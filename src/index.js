@@ -1,6 +1,6 @@
 'use strict';
 
-var APP_ID = 'amzn1.ask.skill.6a08a1ad-ca92-4cf6-8b33-eb63a7e3cc6a';
+var APP_ID = '';
 
 var request = require('request');
 var Alexa = require('./AlexaSkill');
@@ -36,14 +36,14 @@ var diagnosisFunction = function(intent, session, response){
        siteId: "site",
        userId: "user"
    };
-   var url = 'http://184.73.124.73/PortalWebService/api/v2/product/problemIT_Professional/search';
+   var url = '';
    var options = {
        method: 'post',
        body: postData,
        json: true,
        url: url,
        headers: {
-           'Authorization': 'Basic YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ=='
+           'Authorization': ''
        }
    };
    request(options, function (err, res, body) {
