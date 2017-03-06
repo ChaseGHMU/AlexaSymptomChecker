@@ -1,15 +1,9 @@
 'use strict'
 var request = require('request');
-var APP_ID = 'amzn1.ask.skill.3b8ded99-c4c3-43a3-ad0e-2d9d86484dc4';
+var APP_ID = '';
 var IMO = require('./IMO');
 var Alexa = require('./AlexaSkill');
 var OUTPUT = "Welcome to symptom checker. Please list your symptoms.";
-
-/*var config = {
-                hostname : "http://184.73.124.73:80/PortalWebService",
-                apiKeySecret: "YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ==",
-                product: "ProblemIT_Professional/search"
-}*/
 
 exports.handler = (event, context) => {
 	
@@ -41,14 +35,14 @@ exports.handler = (event, context) => {
 				userId: "user"
 			}
 
-			var url = 'http://184.73.124.73/PortalWebServices/api/v2/product/problemIT_Professional/search'
+			var url = ''
 			var options = {
 				method: 'post',
 				body: postData,
 				json: true,
 				url: url,
 				headers: {
-					'Authorization': 'Basic YzQwNWViZTMxNDQwNGNlNWJlZjEzMmU2MWU5YzMxZGQ6N0Q4MjJBRjUxMERCMzZERDlGQzQ5NTVENDRBMDUyMjkwNzMxNjFFODU2OUI5QUUwRjFERjk1Q0ZGOTI2NjMyRQ=='
+					'Authorization': ''
 				}
 			}
 
