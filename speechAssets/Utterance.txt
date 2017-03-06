@@ -16,15 +16,15 @@ GetDiagnosisIntent I {symptom}
 GetDiagnosisIntent {symptom}
 GetDiagnosisIntent I have {symptom} what does it mean
 GetDiagnosisIntent Can you tell me about {symptom}
-GetDiagnosisIntent What is linked to {sympton}
+GetDiagnosisIntent What is linked to {symptom}
 GetDiagnosisIntent Do you know anything about {symptom}
 GetDiagnosisIntent What relates to {symptom}
 GetDiagnosisIntent I think I may have {symptom}
-GetDiagnosisINtent I think I might have {symptom}
+GetDiagnosisIntent I think I might have {symptom}
 GetDiagnosisIntent I have {symptom}
 GetDiagnosisIntent What if I have {symptom}
 GetDiagnosisIntent What could {symptom} mean
-GetDiagnosisIntent If I feel {symptom} should I be worred
+GetDiagnosisIntent If I feel {symptom} should I be worried
 GetDiagnosisIntent If I feel {symptom} what could it be
 GetDiagnosisIntent What are the most popular diagnosis that cause {symptom}
 GetDiagnosisIntent Will I die if {symptom}
@@ -32,7 +32,7 @@ GetDiagnosisIntent Is {symptom} fatal
 GetDiagnosisIntent Could untreated {symptom} be fatal
 
 HelpIntent How do you work
-HelpIntent How do I recieve possible diagnosis
+HelpIntent How do I receive possible diagnosis
 HelpIntent I'm lost on what to do
 HelpIntent Help
 HelpIntent Please help
@@ -57,4 +57,4 @@ HelpIntent Any tips
 HelpIntent Any advice
 HelpIntent I don't know
 HelpIntent How
-HelpIntent I can't even 
+HelpIntent I can't even
